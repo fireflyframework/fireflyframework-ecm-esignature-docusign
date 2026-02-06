@@ -4,7 +4,7 @@
 [![Java](https://img.shields.io/badge/Java-21+-orange.svg)](https://openjdk.java.net/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
 
-DocuSign eSignature adapter for Firefly lib-ecm. Uses the official DocuSign Java SDK and exposes the lib-ecm eSignature ports.
+DocuSign eSignature adapter for Firefly fireflyframework-ecm. Uses the official DocuSign Java SDK and exposes the fireflyframework-ecm eSignature ports.
 
 ## Features
 - Envelope lifecycle: create, get, update, send, void, archive (basic mapping)
@@ -15,8 +15,8 @@ DocuSign eSignature adapter for Firefly lib-ecm. Uses the official DocuSign Java
 ## Installation
 ```xml
 <dependency>
-  <groupId>com.firefly</groupId>
-  <artifactId>lib-ecm-esignature-docusign</artifactId>
+  <groupId>org.fireflyframework</groupId>
+  <artifactId>fireflyframework-ecm-esignature-docusign</artifactId>
   <version>${firefly.version}</version>
 </dependency>
 ```

@@ -1,19 +1,19 @@
 /*
  * Copyright 2024 Firefly Software Solutions Inc.
  */
-package com.firefly.ecm.adapter.docusign;
+package org.fireflyframework.ecm.adapter.docusign;
 
 import com.docusign.esign.api.EnvelopesApi;
 import com.docusign.esign.client.ApiClient;
 import com.docusign.esign.model.*;
-import com.firefly.core.ecm.adapter.AdapterFeature;
-import com.firefly.core.ecm.adapter.EcmAdapter;
-import com.firefly.core.ecm.domain.model.esignature.SignatureEnvelope;
-import com.firefly.core.ecm.domain.enums.esignature.EnvelopeStatus;
-import com.firefly.core.ecm.domain.enums.esignature.SignatureProvider;
-import com.firefly.core.ecm.port.esignature.SignatureEnvelopePort;
-import com.firefly.core.ecm.port.document.DocumentContentPort;
-import com.firefly.core.ecm.port.document.DocumentPort;
+import org.fireflyframework.ecm.adapter.AdapterFeature;
+import org.fireflyframework.ecm.adapter.EcmAdapter;
+import org.fireflyframework.ecm.domain.model.esignature.SignatureEnvelope;
+import org.fireflyframework.ecm.domain.enums.esignature.EnvelopeStatus;
+import org.fireflyframework.ecm.domain.enums.esignature.SignatureProvider;
+import org.fireflyframework.ecm.port.esignature.SignatureEnvelopePort;
+import org.fireflyframework.ecm.port.document.DocumentContentPort;
+import org.fireflyframework.ecm.port.document.DocumentPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -235,7 +235,7 @@ public class DocuSignSignatureEnvelopeAdapter implements SignatureEnvelopePort {
     }
 
     @Override
-    public Flux<SignatureEnvelope> getEnvelopesByProvider(com.firefly.core.ecm.domain.enums.esignature.SignatureProvider provider, Integer limit) {
+    public Flux<SignatureEnvelope> getEnvelopesByProvider(org.fireflyframework.ecm.domain.enums.esignature.SignatureProvider provider, Integer limit) {
         return Flux.empty();
     }
 
@@ -250,7 +250,7 @@ public class DocuSignSignatureEnvelopeAdapter implements SignatureEnvelopePort {
     }
 
     @Override
-    public Mono<SignatureEnvelope> getEnvelopeByExternalId(String externalEnvelopeId, com.firefly.core.ecm.domain.enums.esignature.SignatureProvider provider) {
+    public Mono<SignatureEnvelope> getEnvelopeByExternalId(String externalEnvelopeId, org.fireflyframework.ecm.domain.enums.esignature.SignatureProvider provider) {
         UUID id = externalIdMapping.get(externalEnvelopeId);
         return id != null ? getEnvelope(id) : Mono.empty();
     }

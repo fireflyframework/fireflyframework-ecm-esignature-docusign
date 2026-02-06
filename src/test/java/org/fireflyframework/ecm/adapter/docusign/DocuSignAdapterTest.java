@@ -1,7 +1,7 @@
-package com.firefly.ecm.adapter.docusign;
+package org.fireflyframework.ecm.adapter.docusign;
 
 import com.docusign.esign.client.ApiClient;
-import com.firefly.core.ecm.port.esignature.SignatureEnvelopePort;
+import org.fireflyframework.ecm.port.esignature.SignatureEnvelopePort;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -50,12 +50,12 @@ class DocuSignAdapterTest {
             return p;
         }
         @Bean
-        com.firefly.core.ecm.port.document.DocumentContentPort documentContentPort() {
-            return org.mockito.Mockito.mock(com.firefly.core.ecm.port.document.DocumentContentPort.class);
+        org.fireflyframework.ecm.port.document.DocumentContentPort documentContentPort() {
+            return org.mockito.Mockito.mock(org.fireflyframework.ecm.port.document.DocumentContentPort.class);
         }
         @Bean
-        com.firefly.core.ecm.port.document.DocumentPort documentPort() {
-            return org.mockito.Mockito.mock(com.firefly.core.ecm.port.document.DocumentPort.class);
+        org.fireflyframework.ecm.port.document.DocumentPort documentPort() {
+            return org.mockito.Mockito.mock(org.fireflyframework.ecm.port.document.DocumentPort.class);
         }
     }
 }

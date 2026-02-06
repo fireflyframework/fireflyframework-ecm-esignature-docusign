@@ -1,7 +1,7 @@
 /*
  * Copyright 2024 Firefly Software Solutions Inc.
  */
-package com.firefly.ecm.adapter.docusign;
+package org.fireflyframework.ecm.adapter.docusign;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

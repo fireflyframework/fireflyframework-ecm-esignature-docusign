@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.firefly.ecm.adapter.docusign;
+package org.fireflyframework.ecm.adapter.docusign;
 
 import com.docusign.esign.client.ApiClient;
 import com.docusign.esign.client.auth.OAuth;
