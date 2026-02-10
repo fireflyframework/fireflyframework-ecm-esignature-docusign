@@ -20,7 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
         "firefly.ecm.adapter.docusign.integration-key=ik",
         "firefly.ecm.adapter.docusign.user-id=uid",
         "firefly.ecm.adapter.docusign.account-id=aid",
-        "firefly.ecm.adapter.docusign.private-key=-----BEGIN PRIVATE KEY-----\nMIIBVwIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEA\n-----END PRIVATE KEY-----"
+        "firefly.ecm.adapter.docusign.private-key=-----BEGIN PRIVATE KEY-----\nMIIBVwIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEA\n-----END PRIVATE KEY-----",
+        "spring.autoconfigure.exclude=org.fireflyframework.ecm.adapter.docusign.DocuSignAdapterAutoConfiguration"
 })
 class DocuSignAdapterTest {
 
