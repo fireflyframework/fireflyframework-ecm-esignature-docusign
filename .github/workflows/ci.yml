@@ -2,8 +2,22 @@ name: CI
 on:
   push:
     branches: [develop]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'tutorials/**'
+      - 'examples/**/README.md'
+      - 'LICENSE'
+      - '.gitignore'
   pull_request:
     branches: [develop, main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'tutorials/**'
+      - 'examples/**/README.md'
+      - 'LICENSE'
+      - '.gitignore'
   workflow_dispatch:
     inputs:
       triggered-by:
