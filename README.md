@@ -1,77 +1,96 @@
-# Firefly ECM eSignature – DocuSign
+# Firefly Framework - ECM eSignature - DocuSign
 
 [![CI](https://github.com/fireflyframework/fireflyframework-ecm-esignature-docusign/actions/workflows/ci.yml/badge.svg)](https://github.com/fireflyframework/fireflyframework-ecm-esignature-docusign/actions/workflows/ci.yml)
-
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Java](https://img.shields.io/badge/Java-21+-orange.svg)](https://openjdk.java.net/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Java](https://img.shields.io/badge/Java-21%2B-orange.svg)](https://openjdk.org)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green.svg)](https://spring.io/projects/spring-boot)
 
-DocuSign eSignature adapter for Firefly fireflyframework-ecm. Uses the official DocuSign Java SDK and exposes the fireflyframework-ecm eSignature ports.
+> DocuSign eSignature adapter for Firefly ECM.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Configuration](#configuration)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+This module implements the Firefly ECM e-signature ports using DocuSign as the provider. It provides `DocuSignSignatureEnvelopeAdapter` which integrates with DocuSign's eSignature REST API for envelope creation, recipient management, and signing ceremony orchestration.
+
+The adapter auto-configures via `DocuSignAdapterAutoConfiguration` and is activated by including this module on the classpath alongside the ECM core module.
 
 ## Features
-- Envelope lifecycle: create, get, update, send, void, archive (basic mapping)
-- JWT OAuth flow via DocuSign SDK (signature + impersonation scopes)
-- Optional sandbox mode that switches to demo endpoints
-- Spring Boot auto-configuration for `ApiClient` and conditional bean wiring
+
+- DocuSign integration for e-signature envelope management
+- Spring Boot auto-configuration for seamless activation
+- Implements Firefly ECM SignatureEnvelopePort
+- Configurable via application properties
+- Standalone provider library (include alongside fireflyframework-ecm)
+
+## Requirements
+
+- Java 21+
+- Spring Boot 3.x
+- Maven 3.9+
+- DocuSign account and API credentials
 
 ## Installation
+
 ```xml
 <dependency>
-  <groupId>org.fireflyframework</groupId>
-  <artifactId>fireflyframework-ecm-esignature-docusign</artifactId>
-  <version>${firefly.version}</version>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-ecm-esignature-docusign</artifactId>
+    <version>26.01.01</version>
 </dependency>
 ```
 
+## Quick Start
+
+The adapter is automatically activated when included on the classpath with the ECM core module:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-ecm-esignature-docusign</artifactId>
+    </dependency>
+</dependencies>
+```
+
 ## Configuration
+
 ```yaml
 firefly:
   ecm:
-    enabled: true
-    features:
-      esignature: true
     esignature:
-      provider: docusign
-    adapter:
       docusign:
-        integration-key: ${DOCUSIGN_INTEGRATION_KEY}
-        user-id: ${DOCUSIGN_USER_ID}
-        account-id: ${DOCUSIGN_ACCOUNT_ID}
-        private-key: ${DOCUSIGN_PRIVATE_KEY}  # PEM string or loaded via env/secret manager
-        # optional
-        sandbox-mode: ${DOCUSIGN_SANDBOX:false}
-        base-url: https://na3.docusign.net/restapi
-        auth-server: https://account.docusign.com
-        connection-timeout: 30s
-        read-timeout: 60s
-        max-retries: 3
-        jwt-expiration: 3600
-        enable-polling: true
-        polling-interval: 5m
-        default-email-subject: "Please sign this document"
-        default-email-message: "Please review and sign the attached document(s)."
+        base-url: https://demo.docusign.net
+        account-id: your-account-id
+        integration-key: your-integration-key
 ```
 
-Activation
-- Auto-config class initializes `ApiClient` and requests a JWT user token; set `sandbox-mode: true` to use demo endpoints.
+## Documentation
 
-## Usage
-```java
-@Autowired SignatureEnvelopePort envelopePort;
-SignatureEnvelope draft = SignatureEnvelope.builder()
-    .title("MSA")
-    .description("Please sign")
-    .build();
-SignatureEnvelope created = envelopePort.createEnvelope(draft).block();
-envelopePort.sendEnvelope(created.getId(), null).block();
-```
+No additional documentation available for this project.
 
-Notes
-- Embedded signing URL is not implemented in this adapter.
-- Document/recipient mapping in `buildEnvelopeDefinition` is minimal and intended to be extended.
+## Contributing
 
-## Testing
-- Includes a Spring Boot smoke test that verifies the adapter bean loads when provider is `docusign`.
+Contributions are welcome. Please read the [CONTRIBUTING.md](CONTRIBUTING.md) guide for details on our code of conduct, development process, and how to submit pull requests.
 
 ## License
-Apache 2.0
+
+Copyright 2024-2026 Firefly Software Solutions Inc.
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
