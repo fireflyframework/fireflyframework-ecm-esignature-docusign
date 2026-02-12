@@ -48,7 +48,7 @@ The adapter auto-configures via `DocuSignAdapterAutoConfiguration` and is activa
 <dependency>
     <groupId>org.fireflyframework</groupId>
     <artifactId>fireflyframework-ecm-esignature-docusign</artifactId>
-    <version>26.02.03</version>
+    <version>26.02.04</version>
 </dependency>
 ```
 
