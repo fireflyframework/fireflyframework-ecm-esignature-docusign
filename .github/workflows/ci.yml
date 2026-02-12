@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [develop]
+    branches: [develop, main]
     paths-ignore:
       - '**.md'
       - 'docs/**'
@@ -30,7 +30,6 @@ jobs:
     permissions:
       packages: read
       contents: read
-      actions: write
     with:
       java-version: '25'
     secrets: inherit
