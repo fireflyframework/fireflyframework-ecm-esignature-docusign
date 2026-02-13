@@ -140,8 +140,8 @@ public class DocuSignSignatureEnvelopeAdapter implements SignatureEnvelopePort {
             Envelope update = new Envelope();
             update.setStatus("sent");
             envelopesApi.update(properties.getAccountId(), docuSignEnvelopeId, update);
-            return getEnvelope(envelopeId).block();
-        });
+            return envelopeId;
+        }).flatMap(this::getEnvelope);
     }
 
     @Override
@@ -155,8 +155,8 @@ public class DocuSignSignatureEnvelopeAdapter implements SignatureEnvelopePort {
             update.setStatus("voided");
             update.setVoidedReason(voidReason);
             envelopesApi.update(properties.getAccountId(), docuSignEnvelopeId, update);
-            return getEnvelope(envelopeId).block();
-        });
+            return envelopeId;
+        }).flatMap(this::getEnvelope);
     }
 
     @Override
